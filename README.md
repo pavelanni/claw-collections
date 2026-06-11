@@ -17,6 +17,32 @@ one of two ways:
 > `IfMissing`); edits made later inside the running Claw are preserved across
 > restarts.
 
+## Examples
+
+| Collection | What it shows |
+|---|---|
+| [`software-qa-mcp`](software-qa-mcp/) | Software Q&A agent backed by an MCP server (Context7), plus a verification sub-agent and a per-workspace skill |
+
+_New collections go here — one row per top-level directory._
+
+### Selecting a collection over Git
+
+This repo holds many collections, one per top-level directory. Point a Claw at
+one with:
+
+| Field (`spec.agentFiles.git` / deployer) | Value |
+|---|---|
+| `url` / Git URL | `https://github.com/redhat-et/claw-collections.git` |
+| `ref` / Git ref | a **branch or tag** (e.g. `main`) — **not** a commit SHA |
+| `path` / Path in repo | the bundle directory, e.g. `my-bundle` |
+
+The `path` is the directory that directly contains `workspace-main/`,
+`openclaw.json`, etc. — its contents become the bundle root. Leave `path` empty
+only if the bundle *is* the whole repository root.
+
+> `ref` must be a branch or tag: the operator clones with `git clone --branch`,
+> which does not accept commit SHAs.
+
 ---
 
 ## How a collection maps onto disk
