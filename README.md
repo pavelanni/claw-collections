@@ -12,16 +12,18 @@ one of two ways:
 - **Upload** — the [deployer dashboard](https://github.com/redhat-et/claw-operator-dashboard)
   packages a folder and wires it up for you.
 
-> Seeding only happens when the Claw is **user-managed**
-> (`spec.config.management: user`). It runs **once on first boot** (apply policy
-> `IfMissing`); edits made later inside the running Claw are preserved across
-> restarts.
+> Seeding works with both **operator-managed** (the default) and **user-managed**
+> (`spec.config.management: user`) modes. It runs **once on first boot** (apply
+> policy `IfMissing`); edits made later inside the running Claw are preserved
+> across restarts. In operator-managed mode, the operator adds infrastructure
+> skills (PLATFORM.md, KUBERNETES.md) on top of what `agentFiles` seeds.
 
 ## Examples
 
 | Collection | What it shows |
 |---|---|
 | [`software-qa-mcp`](software-qa-mcp/) | Software Q&A agent backed by an MCP server (Context7), plus a verification sub-agent and a per-workspace skill |
+| [`enterprise-profiles`](enterprise-profiles/) | Per-department assistant profiles (HR, Finance, Executive) for the enterprise onboarding pattern |
 
 _New collections go here — one row per top-level directory._
 
@@ -225,7 +227,7 @@ my-collection/
 
 ## Quick checklist
 
-- [ ] `spec.config.management: user` on the Claw (required for seeding)
+- [ ] Claw CR with `spec.agentFiles` pointing at your collection
 - [ ] Main agent files under `workspace-main/`
 - [ ] Each sub-agent has a `workspace-<id>/` dir **and** an explicit `workspace`
       in `openclaw.json`; `agents.defaults.workspace` is left unset
