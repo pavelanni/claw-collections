@@ -1,0 +1,17 @@
+{
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "anthropic/claude-sonnet-4-6"
+      }
+    },
+    "list": [
+      {
+        "id": "default",
+        "default": true,
+        "name": "HR Assistant",
+        "workspace": "~/.openclaw/workspace"
+      }
+    ]
+  }
+}
