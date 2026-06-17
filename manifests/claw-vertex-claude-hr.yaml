@@ -1,7 +1,7 @@
 apiVersion: claw.sandbox.redhat.com/v1alpha1
 kind: Claw
 metadata:
-  name: hr-specialist
+  name: hr-specialist-gitops
 spec:
   version: "2026.6.8"
   credentials:
