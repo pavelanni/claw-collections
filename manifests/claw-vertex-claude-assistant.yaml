@@ -1,0 +1,21 @@
+apiVersion: claw.sandbox.redhat.com/v1alpha1
+kind: Claw
+metadata:
+  name: executive-assistant
+spec:
+  version: "2026.6.8"
+  credentials:
+    - name: anthropic-vertex
+      type: gcp
+      secretRef:
+        - name: vertex-sa-key
+          key: sa-key.json
+      gcp:
+        project: "itpc-gcp-octo-eng-claude"
+        location: "global"
+      provider: anthropic
+  agentFiles:
+    git:
+      url: https://github.com/redhat-et/claw-collections.git
+      ref: main
+      path: enterprise-profiles/executive-assistant
